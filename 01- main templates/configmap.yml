@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-app-config
+  labels:
+    app: my-app
+data:
+  ENV_VAR: "value"
+
+---
+# example of a pod that uses a ConfigMap as environment and volume variables:
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-app-config
+data:
+  APP_ENV: "production"
+  APP_DEBUG: "false"
+  DATABASE_URL: "postgres://user:password@hostname:5432/dbname"
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-app-pod
+spec:
+  containers:
+    - name: my-app-container
+      image: my-app-image
+      env:
+        - name: APP_ENV
+          valueFrom:
+            configMapKeyRef:
+              name: my-app-config
+              key: APP_ENV
+        - name: DATABASE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: my-app-config
+              key: DATABASE_URL
+      volumeMounts:
+        - name: config-volume
+          mountPath: /etc/config
+  volumes:
+    - name: config-volume
+      configMap:
+        name: my-app-config
