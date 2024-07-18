@@ -16,23 +16,16 @@ spec:
     spec:
       containers:
         - name: simulador-do-caos
-          image: registry.k8s.io/busybox
-          command:
-            - /bin/sh
-          args:
-            - -c
-            - touch /tmp/ready; sleep 30; rm -f /tmp/ready; sleep 600;
+          image: registry.k8s.io/goproxy:0.1
           ports:
-            - containerPort: 3000
+            - containerPort: 8080
           readinessProbe:
-            exec:
-              command:
-                - cat
-                - /tmp/ready
+            tcpSocket:
+              port: 8080
             initialDelaySeconds: 3
-            periodSeconds: 5
-            failureThreshold: 2
-            successThreshold: 2
+            periodSeconds: 10
+            failureThreshold: 3
+            successThreshold: 1
             timeoutSeconds: 3
           resources:
             requests:
@@ -55,7 +48,7 @@ spec:
   type: NodePort
   ports:
     - port: 80
-      targetPort: 3000
+      targetPort: 8080
       name: http
       protocol: TCP
       nodePort: 30000
