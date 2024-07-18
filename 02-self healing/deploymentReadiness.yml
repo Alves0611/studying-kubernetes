@@ -16,16 +16,19 @@ spec:
     spec:
       containers:
         - name: simulador-do-caos
-          image: kubedevio/simulador-do-caos:v1
+          image: registry.k8s.io/busybox
+          command:
+            - /bin/sh
+          args:
+            - -c
+            - touch /tmp/ready; sleep 30; rm -f /tmp/ready; sleep 600;
           ports:
             - containerPort: 3000
           readinessProbe:
-            httpGet:
-              path: /ready
-              port: 3000
-              httpHeaders:
-                - name: Custom-Header
-                  value: Awesome
+            exec:
+              command:
+                - cat
+                - /tmp/ready
             initialDelaySeconds: 3
             periodSeconds: 5
             failureThreshold: 2
