@@ -1,0 +1,7 @@
+startupProbe:
+  httpGet:
+    path: /start
+    port: 8080
+  initialDelaySeconds: 10
+  periodSeconds: 5
+  failureThreshold: 30
