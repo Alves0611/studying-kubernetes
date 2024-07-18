@@ -16,20 +16,14 @@ spec:
     spec:
       containers:
         - name: simulador-do-caos
-          image: kubedevio/simulador-do-caos:v1
+          image: registry.k8s.io/goproxy:0.1
           ports:
-            - containerPort: 3000
+            - containerPort: 8080
           startupProbe:
-            httpGet:
-              path: /health
-              port: 3000
-              failureThreshold: 30
-              periodSeconds: 5
-            initialDelaySeconds: 3
+            tcpSocket:
+              port: 8080
+            failureThreshold: 30
             periodSeconds: 10
-            failureThreshold: 3
-            successThreshold: 1
-            timeoutSeconds: 3
           resources:
             requests:
               memory: "64Mi"
