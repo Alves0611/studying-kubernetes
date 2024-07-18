@@ -1,0 +1,36 @@
+livenessProbe:
+  httpGet:
+    path: /healthz
+    port: 8080
+  initialDelaySeconds: 3 # Número de segundos após o início do container para o liveness
+  periodSeconds: 10 # Intervalo de tempo entre as verificações
+  failureThreshold: 3 # Número de falhas pra considerar a aplicação não saudável
+  successThreshold: 1 # Número de sucessos para zerar o failureThreshold (No liveness é 1)
+  timeoutSeconds: 3 # Timeout da chamada
+---
+# exec
+
+livenessProbe:
+  exec:
+    command:
+      - cat
+      - /tmp/healthy
+  initialDelaySeconds: 3
+  periodSeconds: 10
+  failureThreshold: 3
+  successThreshold: 1
+  timeoutSeconds: 3
+
+# Este exemplo verifica se o arquivo /tmp/healthy existe e pode ser lido. Caso contrário, a aplicação será considerada não saudável.
+---
+# tcp
+
+livenessProbe:
+  tcpSocket:
+    port: 8080
+  initialDelaySeconds: 3
+  periodSeconds: 10
+  failureThreshold: 3
+  successThreshold: 1
+  timeoutSeconds: 3
+# Este exemplo verifica se a aplicação pode aceitar conexões TCP na porta 8080. Se a porta não estiver acessível, a aplicação será considerada não saudável.
