@@ -29,3 +29,19 @@ Os recursos são especificados no manifesto do pod no Kubernetes. Cada contêine
 - **Requests:** O mínimo de recursos garantido para o contêiner. O scheduler do Kubernetes utiliza essa informação para decidir em qual nó o contêiner deve ser executado.
 
 - **Limits:** O máximo de recursos que um contêiner pode consumir. Se um contêiner excede o limite de CPU, ele será limitado (throttled). Se exceder o limite de memória, ele poderá ser terminado (OOM kill).
+
+
+## Boas Práticas
+
+- **Definir Requests e Limits:** Isso ajuda a evitar a sobrecarga de recursos em um nó, garantindo que os aplicativos executem dentro das expectativas de recursos.
+
+- **Monitoramento:** Monitorar o uso de recursos regularmente para ajustar as especificações de requests e limits com base no uso real.
+
+- **Uso de Namespaces e Quotas:** Para controlar o uso de recursos em um ambiente com múltiplos usuários ou equipes, use namespaces e defina quotas de recursos para eles.
+
+
+## Ferramentas de Monitoramento
+
+- **Kubernetes Dashboard:** Fornece uma visão geral do uso de recursos nos pods e nos nós.
+
+- **Prometheus e Grafana:** Soluções populares para monitoramento mais detalhado e visualização de métricas de recursos.
