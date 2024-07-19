@@ -1,15 +1,12 @@
-## Componentes Principais do Kubernetes
+# Componentes Principais do Kubernetes
 
 ### 1. **Worker Node**
 
 O Master Node é responsável pela gestão do cluster. Ele coordena todas as atividades dentro do Kubernetes, como agendamento, escalonamento, manutenção e atualização de aplicativos. Os principais componentes do Master Node são:
 
 - **API Server:** O servidor de API é o ponto de entrada para todos os comandos administrativos no cluster. Ele expõe a API do Kubernetes.
-
 - **etcd:** Um armazenamento de chave-valor que Kubernetes usa para armazenar todos os dados de configuração do cluster. É a fonte de verdade para o estado do cluster.
-
 - **Controller Manager:** Executa os controladores que regulam o estado do sistema, como o controller de replicação que assegura que o número correto de réplicas de um pod esteja em execução em um determinado momento.
-
 - **Scheduler:** O Scheduler é responsável por atribuir nós às cargas de trabalho. Ele seleciona um nó disponível onde o pod pode ser implantado com base em vários fatores, como uso de recursos e restrições.
 
 ### 2. **Control Plane**
@@ -70,9 +67,7 @@ O **Cloud Controller Manager** permite a integração do cluster Kubernetes com 
 Os Nodes são os trabalhadores no cluster Kubernetes. Cada Node pode ser uma máquina física ou virtual. Os componentes principais de um Node são:
 
 - **kubelet:** Um agente que roda em cada Node do cluster e garante que os contêineres estejam rodando em um Pod. Ele recebe instruções do API Server e gerencia a execução dos contêineres via runtime de contêiner (como Docker).
-
 - **Kube Proxy:** Mantém as regras de rede em cada Node. Ele é responsável pelo encaminhamento de solicitações de rede para os contêineres apropriados, além de gerenciar o balanceamento de carga.
-
 - **Container Runtime:** O software que é responsável por executar contêineres. Kubernetes suporta diferentes runtimes como Docker, containerd, e CRI-O.
 
 ### 4. **Pods**
@@ -93,5 +88,21 @@ Os Nodes são os trabalhadores no cluster Kubernetes. Cada Node pode ser uma má
 
 ### 8. **ConfigMaps e Secrets**
 
-- **ConfigMap:** Objeto que permite o armazenamento de pares chave-valor para configuração de aplicativos. 
+- **ConfigMap:** Objeto que permite o armazenamento de pares chave-valor para configuração de aplicativos.
 - **Secret:** Similar ao ConfigMap, mas usado para armazenar informações sensíveis, como senhas e tokens de acesso.
+
+## Labels
+
+Para aproveitar ao máximo o uso dessas etiquetas (labels), elas devem ser aplicadas a todos os objetos de recurso.
+
+| Chave                          | Descrição                                                       | Exemplo          | Tipo  |
+|------------------------------- |---------------------------------------------------------------- |----------------- |------ |
+| app.kubernetes.io/name         | O nome da aplicação                                             | mysql            | Corda |
+| app.kubernetes.io/instance     | Um nome exclusivo que identifica a instância de um aplicativo   | mysql-abcxyz     | Corda |
+| app.kubernetes.io/version      | A versão atual do aplicativo (por exemplo, um SemVer 1.0, hash de revisão, etc.) | 5.7.21           | Corda |
+| app.kubernetes.io/component    | O componente dentro da arquitetura                              | database         | Corda |
+| app.kubernetes.io/part-of      | O nome de um aplicativo de nível superior do qual este faz parte| wordpress        | Corda |
+| app.kubernetes.io/managed-by   | A ferramenta usada para gerenciar o aplicativo                  | Helm             | Corda |
+
+
+https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
