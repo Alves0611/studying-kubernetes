@@ -19,3 +19,13 @@ No Kubernetes, os recursos principais que você pode especificar para cada cont�
 ### Recursos de Rede
 
 - **Bandwidth**: Alguns plugins de rede podem permitir a especificação de limites de largura de banda.
+
+## Especificação de Resources
+
+Os recursos são especificados no manifesto do pod no Kubernetes. Cada contêiner no pod pode ter suas especificações de recursos definidas.
+
+## Requests e Limits
+
+- **Requests:** O mínimo de recursos garantido para o contêiner. O scheduler do Kubernetes utiliza essa informação para decidir em qual nó o contêiner deve ser executado.
+
+- **Limits:** O máximo de recursos que um contêiner pode consumir. Se um contêiner excede o limite de CPU, ele será limitado (throttled). Se exceder o limite de memória, ele poderá ser terminado (OOM kill).
