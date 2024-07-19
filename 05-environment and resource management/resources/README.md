@@ -45,3 +45,7 @@ Os recursos são especificados no manifesto do pod no Kubernetes. Cada contêine
 - **Kubernetes Dashboard:** Fornece uma visão geral do uso de recursos nos pods e nos nós.
 
 - **Prometheus e Grafana:** Soluções populares para monitoramento mais detalhado e visualização de métricas de recursos.
+
+
+## Conclusão
+O gerenciamento eficaz de recursos no Kubernetes é essencial para manter a estabilidade e a performance do cluster. Definir adequadamente requests e limits é fundamental para a operação otimizada de contêineres e para a prevenção de problemas de desempenho relacionados a recursos.
