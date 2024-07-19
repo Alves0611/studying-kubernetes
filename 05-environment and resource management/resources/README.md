@@ -47,6 +47,13 @@ Os recursos são especificados no manifesto do pod no Kubernetes. Cada contêine
 
 - **Prometheus e Grafana:** Soluções populares para monitoramento mais detalhado e visualização de métricas de recursos.
 
+- **metrics-server** coleta métricas de utilização de recursos (CPU e memória) dos objetos do Kubernetes, como Pods e Nodes, e as expõe através da API de métricas do Kubernetes
+
+https://github.com/kubernetes-sigs/metrics-server
+
+- install:
+```kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml```
+
 
 ## Conclusão
 O gerenciamento eficaz de recursos no Kubernetes é essencial para manter a estabilidade e a performance do cluster. Definir adequadamente requests e limits é fundamental para a operação otimizada de contêineres e para a prevenção de problemas de desempenho relacionados a recursos.
