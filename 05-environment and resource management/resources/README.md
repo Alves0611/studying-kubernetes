@@ -1,5 +1,6 @@
 # Gerenciamento de Resources no Kubernetes
 
+https://kubernetes.io/pt-br/docs/concepts/configuration/manage-resources-containers/
 
 No Kubernetes, o termo "Resources" refere-se às capacidades computacionais e de armazenamento que podem ser alocadas para os contêineres em um cluster. O gerenciamento eficiente desses recursos é crucial para a operação estável e a escalabilidade de aplicações em um ambiente Kubernetes.
 
