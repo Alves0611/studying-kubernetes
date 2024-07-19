@@ -86,6 +86,22 @@ Os Nodes são os trabalhadores no cluster Kubernetes. Cada Node pode ser uma má
 
 - **Namespace:** Proporciona um mecanismo para dividir um único cluster Kubernetes em vários ambientes virtuais. Eles são úteis para criar limites de segurança e gestão de recursos dentro de um cluster.
 
+**default**
+O Kubernetes inclui esse namespace para que você possa começar a usar seu novo cluster sem primeiro criar um namespace.
+
+**kube-node-lease**
+Este namespace contém objetos Lease gassociados a cada nó. Os leases de nó permitem que o kubelet envie heartbeats para que o plano de controle possa detectar falhas de nó.
+
+**kube-public**
+Este namespace é legível por todos os clientes (incluindo aqueles não autenticados). Este namespace é reservado principalmente para uso em cluster, no caso de alguns recursos deverem ser visíveis e legíveis publicamente em todo o cluster. O aspecto público deste namespace é apenas uma convenção, não um requisito.
+
+**kube-system**
+O namespace para objetos criados pelo sistema Kubernetes.
+
+doc:
+https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+
+
 ### 8. **ConfigMaps e Secrets**
 
 - **ConfigMap:** Objeto que permite o armazenamento de pares chave-valor para configuração de aplicativos.
@@ -105,4 +121,6 @@ Para aproveitar ao máximo o uso dessas etiquetas (labels), elas devem ser aplic
 | app.kubernetes.io/managed-by   | A ferramenta usada para gerenciar o aplicativo                  | Helm             | Corda |
 
 
+
+doc:
 https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
