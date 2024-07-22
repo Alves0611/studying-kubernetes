@@ -1,0 +1,14 @@
+# Requests
+
+resources:
+  requests:
+    cpu: "0.2"
+    memory: 64Mi
+
+---
+# Limits
+
+resources:
+  limits:
+    cpu: "300m" # 0.3 vCPU (ou 300m). O pod continua sendo executado, mas a utilização da CPU é limitada.
+    memory: 512Mi # 512Mi. O pod será reiniciado se tentar usar mais do que isso.
