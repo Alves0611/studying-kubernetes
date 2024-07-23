@@ -57,3 +57,4 @@ spec:
     statefulsets.apps: "5" # Limite do número total de statefulsets no namespace
     jobs.batch: "10" # Limite do número total de jobs no namespace
     cronjobs.batch: "5" # Limite do número total de cronjobs no namespace
+
