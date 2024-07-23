@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: example-quota
+  namespace: default
+spec:
+  hard:
+    pods: "10"
+    requests.cpu: "4"
+    requests.memory: "10Gi"
+    limits.cpu: "8"
+    limits.memory: "20Gi"
+    persistentvolumeclaims: "5"
+    services: "10"
+    services.loadbalancers: "2"
+    services.nodeports: "5"
+    configmaps: "10"
+    secrets: "10"
+    count/replicationcontrollers: "5"
+    count/deployments.apps: "5"
+    count/statefulsets.apps: "5"
+    count/jobs.batch: "10"
+    count/cronjobs.batch: "5"
+
+--- # limitando recursos
+
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: resource-limits
+  namespace: default
+spec:
+  hard:
+    requests.cpu: "4" # Total de CPU solicitada (em cores) para todos os pods no namespace
+    requests.memory: "10Gi" # Total de memória solicitada para todos os pods no namespace
+    limits.cpu: "8" # Limite máximo de CPU (em cores) para todos os pods no namespace
+    limits.memory: "20Gi" # Limite máximo de memória para todos os pods no namespace
+
+--- # Limitando Objetos
+
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: object-limits
+  namespace: default
+spec:
+  hard:
+    pods: "10" # Limite do número total de pods no namespace
+    persistentvolumeclaims: "5" # Limite do número total de PersistentVolumeClaims no namespace
+    services: "10" # Limite do número total de serviços no namespace
+    services.loadbalancers: "2" # Limite do número total de serviços LoadBalancer no namespace
+    services.nodeports: "5" # Limite do número total de serviços NodePort no namespace
+    configmaps: "10" # Limite do número total de ConfigMaps no namespace
+    secrets: "10" # Limite do número total de Secrets no namespace
+    replicationcontrollers: "5" # Limite do número total de replication controllers no namespace
+    deployments.apps: "5" # Limite do número total de deployments no namespace
+    statefulsets.apps: "5" # Limite do número total de statefulsets no namespace
+    jobs.batch: "10" # Limite do número total de jobs no namespace
+    cronjobs.batch: "5" # Limite do número total de cronjobs no namespace
