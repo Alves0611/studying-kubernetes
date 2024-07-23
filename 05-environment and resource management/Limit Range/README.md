@@ -51,7 +51,7 @@ spec:
 se um Resource Limit estiver configurado para 512Mi, mas o LimitRange no namespace tiver um valor máximo (max) de 300Mi, a configuração do LimitRange prevalecerá. 
 
 
-![alt text](<Captura de tela de 2024-07-23 11-45-23.png>)
+![alt text](./images/Captura%20de%20tela%20de%202024-07-23%2011-45-23.png)
 
 
 # Fluxo de Processamento de Solicitações no Kubernetes
